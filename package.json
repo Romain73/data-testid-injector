@@ -1,0 +1,23 @@
+{
+  "name": "data-testid-injector",
+  "version": "1.0.0",
+  "description": "CLI that injects data-testid attributes into React/JSX files",
+  "type": "module",
+  "bin": {
+    "data-testid-injector": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.24.0",
+    "@babel/parser": "^7.24.0",
+    "@babel/traverse": "^7.24.0",
+    "@babel/types": "^7.24.0",
+    "glob": "^11.0.0"
+  },
+  "devDependencies": {
+    "vitest": "^1.4.0"
+  }
+}
