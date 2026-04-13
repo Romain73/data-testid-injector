@@ -1,13 +1,20 @@
-import { parse } from '@babel/parser'
+import recast from 'recast'
+import { parse as babelParse } from '@babel/parser'
 import _traverse from '@babel/traverse'
-import _generate from '@babel/generator'
 import * as t from '@babel/types'
 import { resolveComponentName } from './resolver.js'
 
 const traverse = _traverse.default ?? _traverse
-const generate = _generate.default ?? _generate
 
 const TARGET_ELEMENTS = new Set(['input', 'button', 'select', 'textarea'])
+
+function babelParseForRecast(source) {
+  return babelParse(source, {
+    sourceType: 'module',
+    plugins: ['jsx', 'typescript'],
+    tokens: true,
+  })
+}
 
 /**
  * @param {string} source  Raw file contents
@@ -15,10 +22,7 @@ const TARGET_ELEMENTS = new Set(['input', 'button', 'select', 'textarea'])
  * @returns {{ code: string, count: number }}
  */
 export function transform(source, filenameFallback) {
-  const ast = parse(source, {
-    sourceType: 'module',
-    plugins: ['jsx', 'typescript'],
-  })
+  const ast = recast.parse(source, { parser: { parse: babelParseForRecast } })
 
   // counters[componentName][elementType] = number
   const counters = {}
@@ -60,7 +64,7 @@ export function transform(source, filenameFallback) {
     },
   })
 
-  const { code } = generate(ast, { retainLines: false, jsescOption: { minimal: true } }, source)
+  const { code } = recast.print(ast)
 
   return { code, count }
 }
