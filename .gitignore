@@ -3,3 +3,4 @@ node_modules/
 .claude/
 docs/superpowers/
 skills-lock.json
+.vscode/

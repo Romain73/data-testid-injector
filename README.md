@@ -105,7 +105,7 @@ function LoginForm() {
       <input type="password" />
       <button type="submit">Login</button>
     </div>
-  );
+  )
 }
 
 // After
@@ -118,7 +118,7 @@ function LoginForm() {
         Login
       </button>
     </div>
-  );
+  )
 }
 ```
 

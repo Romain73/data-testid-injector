@@ -39,7 +39,7 @@ export function transform(source, filenameFallback) {
         (attr) =>
           attr.type === 'JSXAttribute' &&
           attr.name.type === 'JSXIdentifier' &&
-          attr.name.name === 'data-testid'
+          attr.name.name === 'data-testid',
       )
       if (alreadyTagged) return
 
@@ -54,10 +54,7 @@ export function transform(source, filenameFallback) {
       const testId = `${componentName}-${tagName}-${index}`
 
       path.node.attributes.push(
-        t.jsxAttribute(
-          t.jsxIdentifier('data-testid'),
-          t.stringLiteral(testId)
-        )
+        t.jsxAttribute(t.jsxIdentifier('data-testid'), t.stringLiteral(testId)),
       )
 
       count++
