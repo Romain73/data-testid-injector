@@ -11,7 +11,9 @@ export function printDryRun(results) {
   const total = affected.reduce((sum, r) => sum + r.count, 0)
 
   if (total === 0) {
-    console.log('No elements to tag. All targets already have data-testid or no matching files found.')
+    console.log(
+      'No elements to tag. All targets already have data-testid or no matching files found.',
+    )
     return 0
   }
 

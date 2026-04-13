@@ -27,8 +27,7 @@ export function resolveComponentName(jsxPath, filenameFallback) {
       node.type === 'VariableDeclarator' &&
       node.id?.type === 'Identifier' &&
       /^[A-Z]/.test(node.id.name) &&
-      (node.init?.type === 'ArrowFunctionExpression' ||
-       node.init?.type === 'FunctionExpression')
+      (node.init?.type === 'ArrowFunctionExpression' || node.init?.type === 'FunctionExpression')
     ) {
       return node.id.name
     }
