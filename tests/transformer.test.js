@@ -55,4 +55,11 @@ describe('transform', () => {
     expect(code).toBe(expected)
     expect(count).toBe(2)
   })
+
+  it('injects data-testid on a, form, and li elements', () => {
+    const { input, expected } = fixture('new-elements.jsx')
+    const { code, count } = transform(input, 'new-elements')
+    expect(code).toBe(expected)
+    expect(count).toBe(5)
+  })
 })

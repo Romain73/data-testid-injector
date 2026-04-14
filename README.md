@@ -133,7 +133,7 @@ function LoginForm() {
 
 ## Supported elements
 
-`<input>`, `<button>`, `<select>`, `<textarea>`
+`<input>`, `<button>`, `<select>`, `<textarea>`, `<a>`, `<form>`, `<li>`
 
 ## Error handling
 
