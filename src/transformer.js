@@ -6,7 +6,7 @@ import { resolveComponentName } from './resolver.js'
 
 const traverse = _traverse.default ?? _traverse
 
-const TARGET_ELEMENTS = new Set(['input', 'button', 'select', 'textarea'])
+const TARGET_ELEMENTS = new Set(['input', 'button', 'select', 'textarea', 'a', 'form', 'li'])
 
 function babelParseForRecast(source) {
   return babelParse(source, {
